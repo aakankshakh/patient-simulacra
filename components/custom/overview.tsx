@@ -13,11 +13,11 @@ export const Overview = () => {
     >
       <div className="rounded-xl p-6 flex flex-col gap-8 leading-relaxed text-center max-w-xl">
         <p className="flex flex-row justify-center gap-4 items-center">
-          <HeartPulse size={32} />
-          <span>+</span>
           <Hospital size={32} />
+          <span>+</span>
+          <HeartPulse size={32} />
         </p>
-        <p>Patient Simulacra</p>
+        <p>Interact with a simulated patient</p>
         <p></p>
       </div>
     </motion.div>

@@ -31,7 +31,6 @@ export function ChatHeader({
         selectedPatientID={selectedPatientID}
         className="order-1 md:order-2"
       />
-      <NotesToggle className="absolute top-0 right-0" /> 
     </header>
   );
 }

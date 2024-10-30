@@ -59,6 +59,7 @@ export async function saveChat({
       id,
       createdAt: new Date(),
       messages: JSON.stringify(messages),
+      notes: '',
       userId,
     });
   } catch (error) {

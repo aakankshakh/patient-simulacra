@@ -18,3 +18,5 @@ export function NotesToggle({
     </BetterTooltip>
   );
 }
+
+// TO DO: make notes sidebar toggle

@@ -34,7 +34,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
   const { setOpenMobile } = useSidebar();
 
   return (
-    <Sidebar className="group-data-[side=left]:border-r-0">
+    <Sidebar side='left' className="group-data-[side=left]:border-r-0">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
