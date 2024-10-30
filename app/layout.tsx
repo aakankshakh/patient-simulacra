@@ -8,7 +8,7 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://chat.vercel.ai'),
   title: 'Patient Simulacra',
-  description: `Simulated patient that you can converse with, developed using OpenAI's GPT-4o`,
+  description: 'Simulated patient that you can converse with, developed using OpenAI GPT-4o',
 };
 
 export const viewport = {
