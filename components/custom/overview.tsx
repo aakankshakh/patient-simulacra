@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-
 import { HeartPulse, Hospital } from 'lucide-react';
 
 export const Overview = () => {

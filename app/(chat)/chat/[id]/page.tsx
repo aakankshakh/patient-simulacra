@@ -7,8 +7,8 @@ import { Chat as PreviewChat } from '@/components/custom/chat';
 import { getChatById } from '@/db/queries';
 import { Chat } from '@/db/schema';
 import { DEFAULT_MODEL_NAME, models } from '@/lib/model';
-import { convertToUIMessages } from '@/lib/utils';
 import { DEFAULT_PATIENT_NAME, patients } from '@/lib/patients';
+import { convertToUIMessages } from '@/lib/utils';
 
 export default async function Page(props: { params: Promise<any> }) {
   const params = await props.params;

@@ -2,7 +2,6 @@
 
 import { Attachment, ToolInvocation } from 'ai';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 import { ReactNode } from 'react';
 
 import { Markdown } from './markdown';

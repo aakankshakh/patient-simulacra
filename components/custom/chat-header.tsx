@@ -1,12 +1,11 @@
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
-
 import { SidebarToggle } from '@/components/custom/sidebar-toggle';
 import { Button } from '@/components/ui/button';
 import { BetterTooltip } from '@/components/ui/tooltip';
-
-import { PatientSelector } from './patient-selector';
 import { Patient } from '@/lib/patients';
+import { NotesToggle } from './notes-toggle';
+import { PatientSelector } from './patient-selector';
 
 export function ChatHeader({
   selectedPatientID,
@@ -32,6 +31,9 @@ export function ChatHeader({
         selectedPatientID={selectedPatientID}
         className="order-1 md:order-2"
       />
+      <NotesToggle className="absolute top-0 right-0" /> 
     </header>
   );
 }
+
+// TO DO: NotesToggle positioning is weird and needs to change!

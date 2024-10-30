@@ -1,8 +1,8 @@
 'use client';
 
 import { Check, ChevronDown } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { startTransition, useMemo, useOptimistic, useState } from 'react';
-
 import { savePatient } from '@/app/(chat)/actions';
 import { Button } from '@/components/ui/button';
 import {
@@ -11,9 +11,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { cn } from '@/lib/utils';
 import { Patient, patients } from '@/lib/patients';
-import { useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 export function PatientSelector({
   selectedPatientID,

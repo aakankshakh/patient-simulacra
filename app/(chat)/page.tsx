@@ -2,8 +2,9 @@ import { cookies } from 'next/headers';
 
 import { Chat } from '@/components/custom/chat';
 import { DEFAULT_MODEL_NAME, models } from '@/lib/model';
-import { generateUUID } from '@/lib/utils';
 import { DEFAULT_PATIENT_NAME, patients } from '@/lib/patients';
+import { generateUUID } from '@/lib/utils';
+
 
 export default async function Page() {
   const id = generateUUID();

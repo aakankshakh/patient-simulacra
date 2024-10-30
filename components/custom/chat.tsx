@@ -3,15 +3,13 @@
 import { Attachment, Message } from 'ai';
 import { useChat } from 'ai/react';
 import { useState } from 'react';
-
 import { ChatHeader } from '@/components/custom/chat-header';
 import { Message as PreviewMessage } from '@/components/custom/message';
 import { useScrollToBottom } from '@/components/custom/use-scroll-to-bottom';
 import { Model } from '@/lib/model';
-
+import { Patient } from '@/lib/patients';
 import { MultimodalInput } from './multimodal-input';
 import { Overview } from './overview';
-import { Patient } from '@/lib/patients';
 
 export function Chat({
   id,
