@@ -21,14 +21,14 @@ import { Textarea } from '../ui/textarea';
 
 const suggestedActions = [
   {
-    title: 'What is the weather',
-    label: 'in San Francisco?',
-    action: 'What is the weather in San Francisco?',
+    title: `Hello! I'm a medical student that's on the team taking care of you today.`,
+    label: 'Would you mind starting with telling me what brought you in?',
+    action: `Hello! I'm a medical student that's on the team taking care of you today. Would you mind starting with telling me what brought you in?`,
   },
   {
-    title: "Answer like I'm 5,",
-    label: 'why is the sky blue?',
-    action: "Answer like I'm 5, why is the sky blue?",
+    title: `Hello! I'm a medical student that's on the team taking care of you today.`,
+    label: 'Can you confirm your name and age for me?',
+    action: `Hello! I'm a medical student that's on the team taking care of you today. Can you confirm your name and age for me?`,
   },
 ];
 
@@ -156,7 +156,7 @@ export function MultimodalInput({
       {messages.length === 0 &&
         attachments.length === 0 &&
         uploadQueue.length === 0 && (
-          <div className="grid sm:grid-cols-2 gap-2 w-full">
+          <div className="grid sm:grid-cols-1 gap-2 w-full">
             {suggestedActions.map((suggestedAction, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

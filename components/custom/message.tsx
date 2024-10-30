@@ -8,6 +8,7 @@ import { ReactNode } from 'react';
 import { Markdown } from './markdown';
 import { PreviewAttachment } from './preview-attachment';
 import { Weather } from './weather';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 export const Message = ({
   role,
@@ -30,7 +31,9 @@ export const Message = ({
       <div className="flex gap-4 group-data-[role=user]/message:px-5 w-full group-data-[role=user]/message:w-fit group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:py-3.5 group-data-[role=user]/message:bg-muted rounded-xl">
         {role === 'assistant' && (
           <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border">
-            <Sparkles className="size-4" />
+            <Avatar>
+              <AvatarFallback>🤒</AvatarFallback>
+            </Avatar>
           </div>
         )}
         <div className="flex flex-col gap-2 w-full">

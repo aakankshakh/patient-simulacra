@@ -11,19 +11,22 @@ import { Model } from '@/lib/model';
 
 import { MultimodalInput } from './multimodal-input';
 import { Overview } from './overview';
+import { Patient } from '@/lib/patients';
 
 export function Chat({
   id,
   initialMessages,
   selectedModelName,
+  selectedPatientID,
 }: {
   id: string;
   initialMessages: Array<Message>;
   selectedModelName: Model['name'];
+  selectedPatientID: Patient['name'];
 }) {
   const { messages, handleSubmit, input, setInput, append, isLoading, stop } =
     useChat({
-      body: { id, model: selectedModelName },
+      body: { id, model: selectedModelName, patientID: selectedPatientID },
       initialMessages,
       onFinish: () => {
         window.history.replaceState({}, '', `/chat/${id}`);
@@ -37,7 +40,7 @@ export function Chat({
 
   return (
     <div className="flex flex-col min-w-0 h-dvh bg-background">
-      <ChatHeader selectedModelName={selectedModelName} />
+      <ChatHeader selectedPatientID={selectedPatientID} />
       <div
         ref={messagesContainerRef}
         className="flex flex-col min-w-0 gap-6 flex-1 overflow-y-scroll"

@@ -8,6 +8,7 @@ import { getChatById } from '@/db/queries';
 import { Chat } from '@/db/schema';
 import { DEFAULT_MODEL_NAME, models } from '@/lib/model';
 import { convertToUIMessages } from '@/lib/utils';
+import { DEFAULT_PATIENT_NAME, patients } from '@/lib/patients';
 
 export default async function Page(props: { params: Promise<any> }) {
   const params = await props.params;
@@ -35,15 +36,20 @@ export default async function Page(props: { params: Promise<any> }) {
   }
 
   const cookieStore = await cookies();
-  const value = cookieStore.get('model')?.value;
+  const modelValue = cookieStore.get('model')?.value;
   const selectedModelName =
-    models.find((m) => m.name === value)?.name || DEFAULT_MODEL_NAME;
+    models.find((m) => m.name === modelValue)?.name || DEFAULT_MODEL_NAME;
+  const patientValue = cookieStore.get('patient')?.value;
+  const selectedPatientID =
+    patients.find((m) => m.name === patientValue)?.name || DEFAULT_PATIENT_NAME;
+  console.log(selectedPatientID);
 
   return (
     <PreviewChat
       id={chat.id}
       initialMessages={chat.messages}
       selectedModelName={selectedModelName}
+      selectedPatientID={selectedPatientID}
     />
   );
 }

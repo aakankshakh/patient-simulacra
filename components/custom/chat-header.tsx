@@ -1,16 +1,17 @@
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
 
-import { ModelSelector } from '@/components/custom/model-selector';
 import { SidebarToggle } from '@/components/custom/sidebar-toggle';
 import { Button } from '@/components/ui/button';
 import { BetterTooltip } from '@/components/ui/tooltip';
-import { Model } from '@/lib/model';
+
+import { PatientSelector } from './patient-selector';
+import { Patient } from '@/lib/patients';
 
 export function ChatHeader({
-  selectedModelName,
+  selectedPatientID,
 }: {
-  selectedModelName: Model['name'];
+  selectedPatientID: Patient['name'];
 }) {
   return (
     <header className="flex h-16 sticky top-0 bg-background md:h-12 items-center px-2 md:px-2 z-10">
@@ -27,8 +28,8 @@ export function ChatHeader({
           </Link>
         </Button>
       </BetterTooltip>
-      <ModelSelector
-        selectedModelName={selectedModelName}
+      <PatientSelector
+        selectedPatientID={selectedPatientID}
         className="order-1 md:order-2"
       />
     </header>

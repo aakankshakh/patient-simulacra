@@ -5,13 +5,15 @@ import { customModel } from '@/ai';
 import { auth } from '@/app/(auth)/auth';
 import { deleteChatById, getChatById, saveChat } from '@/db/queries';
 import { Model, models } from '@/lib/model';
+import { patients } from '@/lib/patients';
 
 export async function POST(request: Request) {
   const {
     id,
     messages,
     model,
-  }: { id: string; messages: Array<Message>; model: Model['name'] } =
+    patientID
+  }: { id: string; messages: Array<Message>; model: Model['name']; patientID: string } =
     await request.json();
 
   const session = await auth();
@@ -24,31 +26,32 @@ export async function POST(request: Request) {
     return new Response('Model not found', { status: 404 });
   }
 
+  const patient = patients.find((m) => m.name === patientID)
+
+  if (!patient) {
+    return new Response('Patient not found', { status: 404 });
+  }
+
   const coreMessages = convertToCoreMessages(messages);
+
+  const patientDescription = patient.description
+
+
+  const systemPrompt =
+`You are a patient at a hospital with the following information:
+
+${patientDescription}
+
+Have a conversation with your healthcare provider, describing your symptoms based on the medical condition. You have not been diagnosed with your medical condition yet, only use it to describe symptoms. Only respond using plain text and with quick answers.
+`
+;
+
 
   const result = await streamText({
     model: customModel(model),
-    system:
-      'you are a friendly assistant! keep your responses concise and helpful.',
+    system: systemPrompt,
     messages: coreMessages,
     maxSteps: 5,
-    tools: {
-      getWeather: {
-        description: 'Get the current weather at a location',
-        parameters: z.object({
-          latitude: z.number(),
-          longitude: z.number(),
-        }),
-        execute: async ({ latitude, longitude }) => {
-          const response = await fetch(
-            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&hourly=temperature_2m&daily=sunrise,sunset&timezone=auto`
-          );
-
-          const weatherData = await response.json();
-          return weatherData;
-        },
-      },
-    },
     onFinish: async ({ responseMessages }) => {
       if (session.user && session.user.id) {
         try {
